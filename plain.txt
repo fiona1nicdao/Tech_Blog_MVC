@@ -1,0 +1,12 @@
+need to add files to controllers 
+    - api
+        -routes
+    -index.js
+    -homeRoute.js
+
+models folder add the tables i will need 
+
+under public/js add front end javascript
+
+do i need seed foler/ do i need seed data?
+
