@@ -19,14 +19,14 @@ Comment.init(
                 unique: false
               }
         },
-        user_id:{
-            type: DataTypes.STRING,
-            references: {
-                model: 'user',
-                key: 'id',
-                unique: false
-              }
-        },
+        // username:{
+        //     type: DataTypes.STRING,
+        //     references: {
+        //         model: 'user',
+        //         key: 'id',
+        //         unique: false
+        //       }
+        // },
         contentComment:{
             type:DataTypes.STRING
         },

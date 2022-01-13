@@ -28,14 +28,14 @@ Post.init(
         content:{
             type:DataTypes.STRING
         }, 
-        comment_id: {
-            type: DataTypes.INTEGER,
-            references:{
-                model:'comment',
-                key:'id',
-                unique:false
-            }
-        }
+        // comment_id: {
+        //     type: DataTypes.INTEGER,
+        //     references:{
+        //         model:'comm',
+        //         key:'id',
+        //         unique:false
+        //     }
+        // }
     },
     {
         sequelize,
