@@ -11,14 +11,6 @@ Post.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references:{
-                model:'user',
-                key:'id',
-                unique:false
-            }
-        },
         title: {
             type: DataTypes.STRING
         },
@@ -27,22 +19,21 @@ Post.init(
         },
         content:{
             type:DataTypes.STRING
-        }, 
-        // comment_id: {
-        //     type: DataTypes.INTEGER,
-        //     references:{
-        //         model:'comm',
-        //         key:'id',
-        //         unique:false
-        //     }
-        // }
+        },
+        user_id:{
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+              }
+        },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user',
+        modelName: 'post',
     }
 );
 module.exports=Post;

@@ -11,29 +11,26 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        post_id:{
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'post',
-                key: 'id',
-                unique: false
-              }
-        },
-        // username:{
-        //     type: DataTypes.STRING,
-        //     references: {
-        //         model: 'user',
-        //         key: 'id',
-        //         unique: false
-        //       }
-        // },
         contentComment:{
             type:DataTypes.STRING
         },
         date:{
             type:DataTypes.DATE
         },
-
+        post_id: {
+            type: DataTypes.INTEGER,
+            references:{
+                model:'post',
+                key:'id',
+            }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references:{
+                model:'user',
+                key:'id',
+            }
+        },
     },
     {
         sequelize,
@@ -43,3 +40,4 @@ Comment.init(
         modelName: 'comment'
     }
 )
+module.exports=Comment;
