@@ -1,0 +1,14 @@
+[
+    {
+        "title":"javascript",
+        "date":"2021-10-20",
+        "content":"can be backend and frontend",
+        "user_id":1
+    },
+    {
+        "title":"HTML",
+        "date":"2021-12-02",
+        "content":"is frontend",
+        "user_id":2
+    }
+]

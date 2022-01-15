@@ -1,12 +1,3 @@
-need to add files to controllers 
-    - api
-        -routes
-    -index.js
-    -homeRoute.js
-
-models folder add the tables i will need 
-
-under public/js add front end javascript
-
-do i need seed foler/ do i need seed data?
-
+1) do controllers 
+    make a get route and a post route 
+2) handelbars
