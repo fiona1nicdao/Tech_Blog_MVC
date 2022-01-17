@@ -3,4 +3,19 @@ body{
 }
 header {
     background-color: #6495ed;
+    font-size: 200%;
+    padding-left: 50px;
+    padding-bottom: 50px;
+}
+nav ul{
+    display: flex;
+    min-width: 300px;
+    padding-top: 70px;
+    padding-bottom: 20px; 
+}
+nav ul li{
+    padding-right: 100px;
+}
+h1{
+    display: block;
 }
