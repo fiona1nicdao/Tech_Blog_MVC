@@ -13,21 +13,29 @@
   <header>
       <nav>
           <ul>
-              <li>Home</li>
-              <li>Dashboard</li>
-              <li >
-                <a href="./login">login</a>
-              </li>
-              <li>Logout</li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            
+            <!-- Conditionally render login or logout links -->
+            {{#if logged_in}}
+            {{!-- need to work on logout --}}
+            <li><a href="/">logout</a></li>
+            {{else}}
+            <li><a href="/login">login</a></li>
+            {{/if}}
           </ul>
       </nav>
-      <h1>Tech Blog</h1>
+      <h1>
+        <a href="/">Tech Blog</a>
+      </h1>
   </header>
   <main>
     {{{body}}}
   </main>
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src='./js/logout.js'></script>
+  {{/if}}
 </body>
-
-<script src='../../public/js/index.js'></script>
 
 </html>

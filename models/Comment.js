@@ -11,11 +11,14 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        contentComment:{
-            type:DataTypes.STRING
+        content:{
+            type:DataTypes.STRING,
+            allowNull:false,
         },
         date:{
-            type:DataTypes.DATE
+            type:DataTypes.DATE,
+            allowNull:false,
+            defaultValue: DataTypes.NOW,
         },
         post_id: {
             type: DataTypes.INTEGER,

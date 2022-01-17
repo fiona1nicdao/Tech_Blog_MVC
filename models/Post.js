@@ -12,13 +12,20 @@ Post.init(
             autoIncrement: true,
         },
         title: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull:false,
+            validate: {
+                len:[2]
+            },
         },
         date:{
-            type:DataTypes.DATE
+            type:DataTypes.DATE,
+            allownull:false,
+            defaultValue: DataTypes.NOW,
         },
         content:{
-            type:DataTypes.STRING
+            type:DataTypes.STRING,
+            allowNull:false
         },
         user_id:{
             type: DataTypes.INTEGER,
