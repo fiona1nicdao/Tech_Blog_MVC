@@ -1,70 +1,87 @@
 const router = require('express').Router();
 const {User, Post, Comment}= require('../models');
 const isAuth = require('../utils/auth')
-const path = require('path');
-const { route } = require('./api');
 
 // Get route for all posts
 router.get('/', async (req, res) => {
     try{
       const postData = await Post.findAll({
         include:[
+          {model:Comment,
+          include:{
+            model:User,
+            attributes:['name']
+          }},
           {model:User,
-          attributes:['name']},
-          {model:Comment}
+            attributes:['name']},
         ]
-      })
+      });
       // console.log(postData)
-      const blog = postData.map((post)=>post.get({plain: true}));
+      const posts = postData.map((post)=>post.get({plain: true}));
       res.render('homepage',{
-        blog,
+        posts,
         logged_in: req.session.logged_in,
-      })
+      });
     }catch(err){
       res.status(500).json(err)
     }
 });
 
 // Get route for one post
-route.get('/post/:id', async(req,res)=>{
+router.get('/post/:id', async(req,res)=>{
   try{
     const postData = await Post.findByPk(req.params.id, {
       include:[
         {model:User,
           attributes:['name']},
-        {model:Comment}
+        {model:Comment,
+          include:{
+            model:User,
+            attributes:['name']
+          }}
       ]
     });
-    const blog = postData.get({plain:true});
+    const post = postData.get({plain:true});
     res.render('post',{
-      ...blog,
+      ...post,
       logged_in: req.session.logged_in
     })
   }catch(err){
       res.status(500).json(err)
     }
 });
-
-// Get route to signup
-route.get('/signup', async(req,res)=>{
+// Get route to login
+router.get('/login', async(req,res)=>{
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     return;
+  }else {
+    res.render('login');
   }
+});
 
-  res.render('signup');
+// Get route to signup
+router.get('/signup', async(req,res)=>{
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }else {
+    res.render('signup');
+  }
 });
 
 // Get route to dashboard
-route.get('.dashboard', isAuth, async(res,res)=>{
+router.get('/dashboard', isAuth, async(req,res)=>{
   try{
     const userData = await User.findByPk(req.session.user_id,{
       attributes:{exclude:['password']},
       include:[
         {model:Post},
         {model:Comment,
-        include:{model:Post,attributes:['title']}
+        include:{model:Post,
+          attributes:['title','id']}
         }
       ]
     });

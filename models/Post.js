@@ -14,9 +14,6 @@ Post.init(
         title: {
             type: DataTypes.STRING,
             allowNull:false,
-            validate: {
-                len:[2]
-            },
         },
         date:{
             type:DataTypes.DATE,

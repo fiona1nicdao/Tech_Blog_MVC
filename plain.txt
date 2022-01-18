@@ -1,3 +1,8 @@
 1) do controllers 
     make a get route and a post route 
 2) handelbars
+
+3) need to add front end javascript
+4) need to add CSS
+5) check public post
+6) add delete and put routes !!
