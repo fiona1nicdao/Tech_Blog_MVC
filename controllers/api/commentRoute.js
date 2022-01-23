@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const { route } = require('.');
 const { User, Post, Comment } = require('../../models');
-const isAuth = require('../../utils/auth')
+const isAuth = require('../..utils/auth');
 
 
 router.get('/',async (req, res) => {
@@ -32,7 +31,40 @@ router.post('/',isAuth,async (req, res) => {
   }
 });
 
-// make a route.delete
-// make a route.put
+router.put('/:id',isAuth, async(req, res)=>{
+  try{
+    const whatData = await Comment.update({
+      content:req.body.content
+    },
+    {
+      where:{
+        id:req.params.id,
+      },
+    });
+    if(!whatData){
+      res.status(404).json({message:'No comment found with this id, try again'});
+    };
+    res.status(200).json(whatData);
+  }catch(err){
+    res.status(500).json(err);
+  }
+})
+router.delete('/:id', isAuth, async(req, res)=>{
+  try{
+    const commentData = await Comment.destroy({
+      where:{
+        id: req.params.id,
+        user_id:res.session.user_id,
+      }
+    });
+    if(!commentData){
+      res.status(404).json({message: 'No comment found with this id!'});
+    };
+    res.status(200).json(commentData)
+  }catch(err){
+    res.status(500).json(err);
+  }
+})
+
 
 module.exports =router;

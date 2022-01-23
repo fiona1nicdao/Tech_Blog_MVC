@@ -73,7 +73,8 @@ router.get('/signup', async(req,res)=>{
 });
 
 // Get route to dashboard
-router.get('/dashboard', isAuth, async(req,res)=>{
+router.get('/dashboard',isAuth,async (req,res)=>{
+  // res.render('dashboard')
   try{
     const userData = await User.findByPk(req.session.user_id,{
       attributes:{exclude:['password']},
