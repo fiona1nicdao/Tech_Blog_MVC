@@ -85,16 +85,14 @@ router.get('/dashboard',isAuth,async (req,res)=>{
   try{
     const userData = await User.findByPk(req.session.user_id,{
       attributes:{exclude:['password']},
-      include:[
-        {model:Post},
-        {model:Comment,
-        include:{model:Post,
-          attributes:['title','id']}
-        }
-      ]
+      include:[{model:Post}]
     });
     const user = userData.get({plain:true});
-    // const comments = userData.map((comment)=>comment.get({plain:true}));
+
+    const commentData = await Comment.findAll({
+      include:[{model:Post},{model:User, attributes:{exclude:['password']}}]
+    })
+    const comments = commentData.map((comment)=>comment.get({plain:true}));
 
     const postData = await Post.findAll({
       include:[{model:User,attributes:['name']}]
@@ -104,7 +102,7 @@ router.get('/dashboard',isAuth,async (req,res)=>{
     res.render('dashboard',{
       ...user,
       posts,
-      // comments,
+      comments,
       logged_in:true,
     });
   }catch(err){
@@ -145,6 +143,18 @@ router.get('/editpost/:id', isAuth, async (req,res)=>{
     }
 });
 
-// get route for editcomment?
+// get route for editcomment
+router.get('/editcomment/:id',isAuth, async (req, res)=>{
+  try{
+    const commentData = await Comment.findByPk(req.params.id);
+    const comment = commentData.get({plain:true});
+    res.render('editcomment',{
+      ...comment,
+      logged_in:true,
+    });
+  }catch(err){
+    res.status(500).json(err)
+  }
+})
   
 module.exports = router;

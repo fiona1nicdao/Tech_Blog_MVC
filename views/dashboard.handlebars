@@ -12,7 +12,7 @@
 </div>
 
 <div class="row mt-4">
-  {{!-- posts --}}
+  {{!-- edit posts --}}
   <div>
     {{#each posts as |post|}}
     <div></div>
@@ -23,6 +23,26 @@
       </div>
     {{/each}}
     </div>
+  </div>
+
+  <br>
+
+{{!-- edit comments --}}
+  <div>
+    {{#each comments as |comment|}}
+    <div class="comment col-md-8">
+      <h1>Comment</h1>
+      <div class="dashboard-post col-md-12">
+        <h2>Post: {{comment.post.title}}</h2>
+        <p>-{{format_date comment.post.date}}</p>
+      </div>
+      {{!-- <p hidden>{{comment.id}}</p> --}}
+      <h2>{{comment.content}}</h2>
+      <h3>-{{comment.user.name}}, {{format_date comment.date}}</h3>
+      <button><a href="/editcomment/{{comment.id}}">Edit Comment</a></button>
+    </div>
+    <br>
+    {{/each}}
   </div>
 </div>
 <script src='/js/dashboard.js'></script>

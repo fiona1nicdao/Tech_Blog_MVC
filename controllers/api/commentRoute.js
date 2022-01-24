@@ -52,9 +52,9 @@ router.post('/',async (req, res) => {
   }
 });
 
-router.put('/:id',isAuth, async(req, res)=>{
+router.put('/:id', async(req, res)=>{
   try{
-    const whatData = await Comment.update({
+    const commentData = await Comment.update({
       content:req.body.content
     },
     {
@@ -62,10 +62,11 @@ router.put('/:id',isAuth, async(req, res)=>{
         id:req.params.id,
       },
     });
-    if(!whatData){
+    if(!commentData){
       res.status(404).json({message:'No comment found with this id, try again'});
+      return;
     };
-    res.status(200).json(whatData);
+    res.status(200).json(commentData);
   }catch(err){
     res.status(500).json(err);
   }
@@ -75,7 +76,7 @@ router.delete('/:id', isAuth, async(req, res)=>{
     const commentData = await Comment.destroy({
       where:{
         id: req.params.id,
-        user_id:res.session.user_id,
+        user_id:req.session.user_id,
       }
     });
     if(!commentData){

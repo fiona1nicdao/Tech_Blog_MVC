@@ -1,13 +1,12 @@
 const editpostHandler = async function(event){
     event.preventDefault();
-    const title = document.querySelector('#edittitle-input').value.trim();
-    const content =document.querySelector('#edit-content-input').value.trim();
-    const id = document.querySelector('#editpost-id').innerHTML;
+    const content =document.querySelector('#content-input').value.trim();
+    const id = document.querySelector('#editcomment-id').innerHTML;
 
-    if(title || content){
-        const response = await fetch(`/api/post/${id}`,{
+    if(content){
+        const response = await fetch(`/api/comment/${id}`,{
             method:'PUT',
-            body: JSON.stringify({title, content}),
+            body: JSON.stringify({content}),
             headers:{'Content-Type':'application/json'},
         });
         if(response.ok){
@@ -20,9 +19,9 @@ const editpostHandler = async function(event){
 
 const deletepostHandler = async function(event){
     event.preventDefault();
-    const id = document.querySelector('#editpost-id').innerHTML;
+    const id = document.querySelector('#editcomment-id').innerHTML;
     if(id){
-        const response = await fetch(`/api/post/${id}`,{
+        const response = await fetch(`/api/comment/${id}`,{
             method:'DELETE'
         });
         if(response.ok){
@@ -35,7 +34,7 @@ const deletepostHandler = async function(event){
 }
 
 document
-    .querySelector('.editpost-form')
+    .querySelector('.editcomment-form')
     .addEventListener('submit',editpostHandler)
 
 document
