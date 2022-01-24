@@ -10,7 +10,7 @@ This is a blog site where developers can share their technical concepts, recent 
 ## Preview 
 need to finish 
 ## Heroku
-The live deployment is here: 
+The live deployment is here: https://tech-blog-fionanicdao.herokuapp.com/
 need to finish 
 ## Questions 
 Please contact me direclty via the github [fiona1nicdao](<https://github.com/fiona1nicdao>)

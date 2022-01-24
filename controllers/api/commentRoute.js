@@ -39,7 +39,7 @@ router.get('/:id',async(req,res)=>{
 
 })
 
-router.post('/',async (req, res) => {
+router.post('/',isAuth, async (req, res) => {
   try{
     const commentData = await Comment.create(req.body);
     req.session.save(()=>{
@@ -71,7 +71,7 @@ router.put('/:id', async(req, res)=>{
     res.status(500).json(err);
   }
 })
-router.delete('/:id', isAuth, async(req, res)=>{
+router.delete('/:id', async(req, res)=>{
   try{
     const commentData = await Comment.destroy({
       where:{

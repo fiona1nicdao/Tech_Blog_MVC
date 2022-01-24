@@ -111,7 +111,7 @@ router.get('/dashboard',isAuth,async (req,res)=>{
 });
 
 // get route for newpost
-router.get('/makepost',async(req,res)=>{
+router.get('/makepost',isAuth, async(req,res)=>{
   try{
     const userData = await User.findByPk(req.session.user_id,{
       attributes:{exclude:['password']},
