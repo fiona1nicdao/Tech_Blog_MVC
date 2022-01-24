@@ -1,20 +1,15 @@
 <div>
-    <h2>Here is where the post will be logged</h2>
+    <h2>Current Tech Posts</h2>
 </div>
 
 <br>
 
 {{#each posts as |post|}}
-<div>
-    
-    <h1>
-        <a href="/post/{{post.id}}">{{post.title}}</a>
-    </h1>
-    <p>
-        Posted by: {{post.user.name}} at {{format_date post.data}}
-    </p>
-    <h2>
-        {{post.content}}
-    </h2>
+<div class="post">
+    <div class="top-post">
+        <h1><a href="/post/{{post.id}}">{{post.title}}</a></h1>
+        <p>Posted by: {{post.user.name}} at {{format_date post.data}}</p> 
+    </div>
+    <h2>{{post.content}}</h2>
 </div>
 {{/each}}

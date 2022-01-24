@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
-const isAuth = require('../..utils/auth');
+const isAuth = require('../../utils/auth')
 
 
 router.get('/',async (req, res) => {
@@ -18,6 +18,26 @@ router.get('/',async (req, res) => {
       res.status(500).json(err);
     }
 });
+router.get('/:id',async(req,res)=>{
+
+    try{
+      const commentData = await Comment.findAll({
+        include:[
+          {model:User,
+          attributes:['name']},
+          {model:Post,
+          attributes:['id']}
+        ]
+      });
+      if(!commentData){
+        res.status(404).json({message:'no comment found with that id'});
+      }
+      res.status(200).json(commentData);
+    }catch(err) {
+      res.status(500).json(err);
+    }
+
+})
 
 router.post('/',isAuth,async (req, res) => {
   try{

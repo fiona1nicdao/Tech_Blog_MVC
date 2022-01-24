@@ -50,6 +50,7 @@ router.get('/post/:id', async(req,res)=>{
       res.status(500).json(err)
     }
 });
+
 // Get route to login
 router.get('/login', async(req,res)=>{
   // If the user is already logged in, redirect the request to another route
@@ -95,7 +96,9 @@ router.get('/dashboard',isAuth,async (req,res)=>{
       res.status(500).json(err)
     }
 });
-
+router.get('/makepost',async(req,res)=>{
+  res.render('makepost');
+});
 // get route for newpost?
 // get route for editpost?
 // get route for editcomment?

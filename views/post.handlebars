@@ -1,0 +1,28 @@
+{{!-- post  --}}
+<div class="post">
+    <div class="top-post">
+        <h1><a href="/post/{{id}}">{{title}}</a></h1>
+        <p>Posted by: {{user.name}} at {{format_date date}}</p> 
+    </div>
+    <h2 class="margin2">{{content}}</h2>
+</div>
+{{!-- comment --}}
+<div class="post">
+    <div class="top-post">
+        <h1><a href="/post/{{id}}">{{title}}</a></h1>
+        <p>Posted by: {{user.name}} at {{format_date date}}</p> 
+    </div>
+    <form class="margin2 form comment-form">
+        <div class="form-group">
+            <h1 class="">Comment</h1>
+            <p hidden id="user-id">{{user.id}}</p>
+            <p hidden id="post-id">{{id}}</p>
+            <textarea class="comment-content" id="comment-input"name="comment-input"></textarea>
+        </div>
+        <div class="center form-group">
+            <button type="submit"class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+</div>
+<script src="/js/comment.js"></script>

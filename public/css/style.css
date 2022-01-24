@@ -1,6 +1,9 @@
 body{
     background-color: #d2dcf0;
-    color:darkblue;
+    color:#00008b;
+}
+a{
+    color:#00008b;
 }
 header{
     background-color: #94b1e7;
@@ -22,4 +25,32 @@ nav ul li{
 }
 h1{
     display: block;
+}
+.post{
+    border: 2px solid #00008b;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+.top-post{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #8eabe2;
+    padding: 10px;
+}
+footer{
+    text-align: center;
+}
+button{
+    background-color: #b1c5eb;
+    padding: 5px;
+}
+.margin2{
+    padding-left: 2rem;
+}
+.center{
+    text-align: center;
+}
+.comment-content{
+    height:100px;
+    width: 1000px;
 }
