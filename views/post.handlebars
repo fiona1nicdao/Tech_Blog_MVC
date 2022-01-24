@@ -10,19 +10,28 @@
 <div class="post">
     <div class="top-post">
         <h1><a href="/post/{{id}}">{{title}}</a></h1>
-        <p>Posted by: {{user.name}} at {{format_date date}}</p> 
+        <p>Posted by: {{user.name}} at {{format_date date}}</p>
+        <p hidden id="user-id">{{user.id}}</p>
+        <p hidden id="post-id">{{id}}</p>
     </div>
+
+    {{#each comments as |comment|}}
+    <div class="comment">
+        <h1>Comment</h1>
+        <h2>{{comment.content}}</h2>
+        <h3>-{{comment.user.name}}, {{format_date comment.date}}</h3>
+    </div>
+    {{/each}}
+
     <form class="margin2 form comment-form">
         <div class="form-group">
-            <h1 class="">Comment</h1>
-            <p hidden id="user-id">{{user.id}}</p>
-            <p hidden id="post-id">{{id}}</p>
-            <textarea class="comment-content" id="comment-input"name="comment-input"></textarea>
+            <h1>Comment</h1>
+            <input class="comment-content" id="comment-input"name="comment-input">
         </div>
         <div class="center form-group">
             <button type="submit"class="btn btn-primary">Submit</button>
         </div>
-
     </form>
+
 </div>
 <script src="/js/comment.js"></script>

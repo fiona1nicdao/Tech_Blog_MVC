@@ -45,7 +45,7 @@ button{
     padding: 5px;
 }
 .margin2{
-    padding-left: 2rem;
+    padding: 2rem;
 }
 .center{
     text-align: center;
@@ -53,4 +53,8 @@ button{
 .comment-content{
     height:100px;
     width: 1000px;
+}
+.comment{
+    border: 2px solid #00008b;
+    padding-left: 3rem;
 }

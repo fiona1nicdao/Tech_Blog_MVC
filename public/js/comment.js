@@ -1,19 +1,22 @@
-const commentHandler =function(event){
+const commentHandler = async function(event){
     event.preventDefault();
-    alert("button works")
     const content = document.querySelector('#comment-input').value.trim();
     const user_id = document.querySelector('#user-id').innerHTML;
     const post_id = document.querySelector('#post-id').innerHTML;
-    if (content && user_id && post_id){
+
+    console.log(content, user_id, post_id)
+
+    if (content && post_id && user_id){
         const response = await fetch('/api/comment/',{
             method:'POST',
-            body:JSON.stringify({content, user_id, post_id}),
+            body:JSON.stringify({content, post_id, user_id}),
             headers:{
                 'Content-Type':'application/json',
-            },
+            }, 
         });
         if(response.ok){
-            document.location.replace(`/post/${post_id}`)
+            document.location.replace(`/post/${post_id}`) 
+            console.log("hello",response)
         }else{
             alert('Failed to create comment');
         }
