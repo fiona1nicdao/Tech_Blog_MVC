@@ -12,8 +12,19 @@
 </div>
 
 <div class="row mt-4">
-{{!-- post --}}
-  {{#if post.length}}
+{{!-- posts --}}
+
+<div
+  {{#each posts as |post|}}
+  <div></div>
+  <div>
+    <div class="dashboard-post col-md-8">
+      <h4><a href="/dashboard/{{post.id}}">{{post.title}}</a></h4>
+      <p>{{format_date post.date}}</p>
+    </div>
+  {{/each}}
+  </div>
+  {{#if posts.length}}
   <div class="col-md-6 post-list">
     <h3>Current Post:</h3>
 

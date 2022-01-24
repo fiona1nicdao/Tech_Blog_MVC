@@ -14,12 +14,13 @@ router.get('/',async (req, res) => {
     }
 });
 
-router.post('/',isAuth,async (req, res) => {
+router.post('/',async (req, res) => {
   try{
-    const postData = await Post.create({
-      ...res.body,
-      user_id: req.session.user_id,
-    });
+    const postData = await Post.create(req.body);
+    req.session.save(()=>{
+      req.session.user_id = postData.id;
+      req.session.logged_in = true;
+    })
     res.status(200).json(postData);
   }catch(err) {
     res.status(500).json(err);
