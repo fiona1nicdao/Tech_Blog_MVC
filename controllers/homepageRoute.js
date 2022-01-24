@@ -94,6 +94,7 @@ router.get('/dashboard',isAuth,async (req,res)=>{
       ]
     });
     const user = userData.get({plain:true});
+    // const comments = userData.map((comment)=>comment.get({plain:true}));
 
     const postData = await Post.findAll({
       include:[{model:User,attributes:['name']}]
@@ -103,6 +104,7 @@ router.get('/dashboard',isAuth,async (req,res)=>{
     res.render('dashboard',{
       ...user,
       posts,
+      // comments,
       logged_in:true,
     });
   }catch(err){
@@ -127,8 +129,20 @@ router.get('/makepost',async(req,res)=>{
 });
 
 // get route for editpost
-router.get('/dashboard/:id',async (req,res)=>{
-  res.render('editpost')
+router.get('/editpost/:id', isAuth, async (req,res)=>{
+  try{
+    const postData = await Post.findByPk(req.params.id,{
+      include:[{model:User}]
+    })
+    const postthings = postData.get({plain:true});
+    res.render('editpost'
+    ,{
+      ...postthings,
+      logged_in:true,
+    });
+  }catch(err){
+      res.status(500).json(err)
+    }
 });
 
 // get route for editcomment?

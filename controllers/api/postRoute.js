@@ -27,11 +27,11 @@ router.post('/',async (req, res) => {
   }
 });
 
-router.put('/:id', isAuth, async(req,res)=>{
+router.put('/:id', async(req,res)=>{
   try{
     const postData = await Post.update({
       title:req.body.title,
-      content:res.body.content
+      content:req.body.content
     },
     {
       where:{
@@ -40,6 +40,7 @@ router.put('/:id', isAuth, async(req,res)=>{
     });
     if(!postData){
       res.status(404).json({message:'No post found with this id, try again.'});
+      return;
     };
     res.status(200).json(postData);
   }catch(err){
@@ -52,7 +53,7 @@ router.delete('/:id', isAuth, async(req, res)=> {
     const postData = await Post.destroy({
       where: {
         id:req.params.id,
-        user_id:res.session.user_id,
+        user_id:req.session.user_id,
       },
     });
     if(!postData){
