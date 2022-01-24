@@ -8,7 +8,12 @@ This is a blog site where developers can share their technical concepts, recent 
  This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Preview 
-need to finish 
+![homepage](./public/images/image-1.png)
+![loginpage](./public/images/image2.png)
+![dashboard](./public/images/image3.png)
+![createpost](./public/images/image4.png)
+![editpost](./public/images/image5.png)
+![editcomment](./public/images/image6.png)
 ## Heroku
 The live deployment is here: https://tech-blog-fionanicdao.herokuapp.com/
 need to finish 
