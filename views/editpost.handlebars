@@ -1,3 +1,25 @@
 <div>
-    write edit post here 
+    <h1 class="top-margin"></h1>
+    <div class="top-post">
+        <h1>Edit Post </h1>
+    </div>
+    <div class="comment">
+        <form class="margin2 form editpost-form">
+            <div class="form-group">
+                <h2 for="edittitle-input">Title:</h2>
+                <input class="edittitle-content" id="edittitle-input"name="edittitle-input">
+            </div>
+            <div class="form-group">
+                <h2 for="edit-content-input">Content:</h2>
+                <input class="comment-content" id="edit-content-input"name="edit-content-input">
+            </div>
+            <div class="center form-group">
+                <button type="submit"class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <p hidden id="post-id">{{post.id}}</p>
+        <button id="delete-btn"class="delete-btn btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+    </div>
+
 </div>
+<script src="/js/editpost.js"></script>

@@ -39,6 +39,7 @@ h1{
 }
 footer{
     text-align: center;
+    margin-top: 1rem;
 }
 button{
     background-color: #b1c5eb;
@@ -65,4 +66,14 @@ button{
     background-color: #8eabe2;
     padding: 1rem;
     margin: 5px;
+}
+.edittitle-content{
+    width: 1000px;
+}
+.delete-btn{
+    margin-left: 33rem;
+    margin-bottom: 2rem;
+}
+.top-margin{
+    margin-top: 1rem;
 }
