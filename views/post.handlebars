@@ -1,7 +1,8 @@
 {{!-- post  --}}
 <div class="post">
     <div class="top-post">
-        <h1><a href="/post/{{id}}">{{title}}</a></h1>
+         <h2>Add a Comment to {{title}} Post </h2>
+        {{!-- <h1><a href="/post/{{id}}">{{title}}</a></h1> --}}
         <p>Posted by: {{user.name}} at {{format_date date}}</p> 
     </div>
     <h2 class="margin2">{{content}}</h2>
@@ -9,7 +10,7 @@
 {{!-- comment --}}
 <div class="post">
     <div class="top-post">
-        <h1><a href="/post/{{id}}">{{title}}</a></h1>
+        <h1>{{title}}</h1>
         <p>Posted by: {{user.name}} at {{format_date date}}</p>
         <p hidden id="user-id">{{user.id}}</p>
         <p hidden id="post-id">{{id}}</p>
