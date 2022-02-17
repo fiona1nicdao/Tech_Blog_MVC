@@ -1,6 +1,7 @@
 # Tech_Blog_MVC
 Homework 14
- ![License: MIT](<https://img.shields.io/badge/License-MIT-yellow.svg>)
+
+![License: MIT](<https://img.shields.io/badge/License-MIT-yellow.svg>)
 ## Description 
 This is a blog site where developers can share their technical concepts, recent advancements, and new technologies.
 
@@ -9,10 +10,9 @@ This is a blog site where developers can share their technical concepts, recent 
 
 ## Heroku
 The live deployment is here: https://tech-blog-fionanicdao.herokuapp.com/
-need to finish 
 
 ## Techonolgies Used 
-- Javascript, NodeJS, Handlebars, CSS, HTML
+- Javascript, NodeJS, MySQL, SQL, Sequalize, Handlebars, CSS, HTML
 
 ## Preview 
 ![homepage](./public/images/image-1.png)
