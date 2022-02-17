@@ -5,6 +5,9 @@ body{
 a{
     color:#00008b;
 }
+width{
+    width:100%
+}
 header{
     background-color: #94b1e7;
     padding-left: 50px;
