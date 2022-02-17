@@ -19,7 +19,7 @@
     <div>
       <div class="dashboard-post col-md-8">
         <h4><a href="/editpost/{{post.id}}">{{post.title}}</a></h4>
-        <p>{{format_date post.date}}</p>
+        <p>{{post.user.name}} {{format_date post.date}}</p>
       </div>
     {{/each}}
     </div>

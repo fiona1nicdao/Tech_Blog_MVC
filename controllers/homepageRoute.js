@@ -88,6 +88,8 @@ router.get('/dashboard',isAuth,async (req,res)=>{
       include:[{model:Post}]
     });
     const user = userData.get({plain:true});
+    person = user.id
+    console.log("HELLLLLLOOOOOOOOO",person)
 
     const commentData = await Comment.findAll({
       include:[{model:Post},{model:User, attributes:{exclude:['password']}}]
@@ -95,6 +97,7 @@ router.get('/dashboard',isAuth,async (req,res)=>{
     const comments = commentData.map((comment)=>comment.get({plain:true}));
 
     const postData = await Post.findAll({
+      where:{user_id: person},
       include:[{model:User,attributes:['name']}]
     });
     const posts = postData.map((post)=>post.get({plain: true}));
