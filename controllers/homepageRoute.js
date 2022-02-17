@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {User, Post, Comment}= require('../models');
+const { truncate } = require('../models/User');
 const isAuth = require('../utils/auth')
 
 // Get route for all posts
@@ -41,8 +42,11 @@ router.get('/post/:id', async(req,res)=>{
       ]
     });
     const posts = postData.get({plain:true});
+    const commentpost = posts.id
+    // const posts = postData.map((post)=>post.get({plain:true}))
 
     const commentData = await Comment.findAll({
+      where:{post_id: commentpost},
       include:[{model:User,attributes:['name']},{model:Post}]
     });
     const comments = commentData.map((comment)=>comment.get({plain: true}));
@@ -89,9 +93,9 @@ router.get('/dashboard',isAuth,async (req,res)=>{
     });
     const user = userData.get({plain:true});
     person = user.id
-    console.log("HELLLLLLOOOOOOOOO",person)
 
     const commentData = await Comment.findAll({
+      // where:{user_id:person},
       include:[{model:Post},{model:User, attributes:{exclude:['password']}}]
     })
     const comments = commentData.map((comment)=>comment.get({plain:true}));
