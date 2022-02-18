@@ -2,6 +2,7 @@
   <div class="col-auto">
     <h1> Your Dashboard</h1>
     <h2>Welcome, {{name}}!</h2>
+    <p>hello {{id}}</p>
   </div>
 </div>
 
@@ -12,6 +13,7 @@
 </div>
 
 <div class="row mt-4">
+  {{!-- add if else show post / else have statment user has no post --}}
   {{!-- edit posts --}}
   <div class="width">
     {{#each posts as |post|}}
@@ -24,14 +26,14 @@
 
   <br>
 
-{{!-- edit comments --}}
+  {{!-- edit comments --}}
   <div>
     {{#each comments as |comment|}}
     <div class="comment col-md-8">
       <h1>Comment</h1>
       <div class="dashboard-post col-md-12">
         <h2>Post: {{comment.post.title}}</h2>
-        <p>-{{comment.user.name}}   {{format_date comment.post.date}}</p>
+        <p>- {{format_date comment.post.date}}</p>
       </div>
       {{!-- <p hidden>{{comment.id}}</p> --}}
       <h2>{{comment.content}}</h2>

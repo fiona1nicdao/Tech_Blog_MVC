@@ -98,11 +98,13 @@ router.get('/dashboard',isAuth,async (req,res)=>{
       include:[{model:Post}]
     });
     
-    const user = userData.get({plain:true});
-    person = user.id
+    const users = userData.get({plain:true});
+    const person = users.id
+
+    console.log("GOOOOOOOOOOOOOOOOD", person)
 
     const commentData = await Comment.findAll({
-      // where:{user_id:person},
+      where:{user_id:person},
       include:[{model:Post},{model:User, attributes:{exclude:['password']}}]
     })
     const comments = commentData.map((comment)=>comment.get({plain:true}));
@@ -114,7 +116,7 @@ router.get('/dashboard',isAuth,async (req,res)=>{
     const posts = postData.map((post)=>post.get({plain: true}));
 
     res.render('dashboard',{
-      ...user,
+      ...users,
       posts,
       comments,
       logged_in:true,
