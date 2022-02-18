@@ -33,6 +33,7 @@ router.get('/post/:id', async(req,res)=>{
   try{
     const userData = await User.findByPk(req.params.id)
     const commentAuthor =req.session.user_id
+    console.log("WHHHHHHHHHHHAAAAAAAAT",commentAuthor)
     const users = userData.get({plain:true})
     const postData = await Post.findByPk(req.params.id, {
       include:[
@@ -49,7 +50,7 @@ router.get('/post/:id', async(req,res)=>{
 
     const commentData = await Comment.findAll({
       where:{post_id: commentpost},
-      include:[{model:User,attributes:['name'],where:{id:commentAuthor}},{model:Post}]
+      include:[{model:User,attributes:['name']},{model:Post}]
     });
     const comments = commentData.map((comment)=>comment.get({plain: true}));
 
@@ -57,12 +58,14 @@ router.get('/post/:id', async(req,res)=>{
       ...posts,
       users,
       comments,
+      commentAuthor,
       logged_in: req.session.logged_in
     })
   }catch(err){
-      res.status(500).json(err)
+      res.render('login')
+      // res.status(500).json(err)
     }
-});
+}); 
 
 // Get route to login
 router.get('/login', async(req,res)=>{
