@@ -2,7 +2,7 @@
   <div class="col-auto">
     <h1> Your Dashboard</h1>
     <h2>Welcome, {{name}}!</h2>
-    <p>hello {{id}}</p>
+    {{!-- <p>hello{{users.Post.id}}</p> --}}
   </div>
 </div>
 
@@ -12,21 +12,24 @@
   <button id="make-post">Create Post!</button>
 </div>
 
+
 <div class="row mt-4">
-  {{!-- add if else show post / else have statment user has no post --}}
   {{!-- edit posts --}}
+  <h1 class="block">Your Posts</h1>
+
   <div class="width">
     {{#each posts as |post|}}
       <div class=" post dashboard-post col-md-8">
         <h4><a href="/editpost/{{post.id}}">{{post.title}}</a></h4>
         <p>{{post.user.name}} {{format_date post.date}}</p>
       </div>
-    {{/each}}
+   {{/each}}
   </div>
 
   <br>
 
   {{!-- edit comments --}}
+  <h1>Your Comments </h1>
   <div>
     {{#each comments as |comment|}}
     <div class="comment col-md-8">

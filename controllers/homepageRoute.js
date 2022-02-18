@@ -95,13 +95,10 @@ router.get('/dashboard',isAuth,async (req,res)=>{
   try{
     const userData = await User.findByPk(req.session.user_id,{
       attributes:{exclude:['password']},
-      include:[{model:Post}]
     });
     
     const users = userData.get({plain:true});
     const person = users.id
-
-    console.log("GOOOOOOOOOOOOOOOOD", person)
 
     const commentData = await Comment.findAll({
       where:{user_id:person},
@@ -114,6 +111,8 @@ router.get('/dashboard',isAuth,async (req,res)=>{
       include:[{model:User,attributes:['name']}]
     });
     const posts = postData.map((post)=>post.get({plain: true}));
+
+
 
     res.render('dashboard',{
       ...users,
