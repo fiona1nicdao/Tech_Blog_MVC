@@ -15,14 +15,11 @@
   {{!-- edit posts --}}
   <div class="width">
     {{#each posts as |post|}}
-    <div></div>
-    <div>
-      <div class="dashboard-post col-md-8">
+      <div class=" post dashboard-post col-md-8">
         <h4><a href="/editpost/{{post.id}}">{{post.title}}</a></h4>
         <p>{{post.user.name}} {{format_date post.date}}</p>
       </div>
     {{/each}}
-    </div>
   </div>
 
   <br>
@@ -34,7 +31,7 @@
       <h1>Comment</h1>
       <div class="dashboard-post col-md-12">
         <h2>Post: {{comment.post.title}}</h2>
-        <p>-{{format_date comment.post.date}}</p>
+        <p>-{{comment.user.name}}   {{format_date comment.post.date}}</p>
       </div>
       {{!-- <p hidden>{{comment.id}}</p> --}}
       <h2>{{comment.content}}</h2>

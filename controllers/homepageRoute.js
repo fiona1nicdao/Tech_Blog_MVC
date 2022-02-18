@@ -31,13 +31,15 @@ router.get('/', async (req, res) => {
 // Get route for one post
 router.get('/post/:id', async(req,res)=>{
   try{
+    const userData = await User.findByPk(req.params.id)
+    const commentAuthor =req.session.user_id
+    const users = userData.get({plain:true})
     const postData = await Post.findByPk(req.params.id, {
       include:[
         {model:User},
         {model:Comment,
           include:{
-            model:User,
-            // attributes:['name']
+            model:User
           }}
       ]
     });
@@ -47,12 +49,13 @@ router.get('/post/:id', async(req,res)=>{
 
     const commentData = await Comment.findAll({
       where:{post_id: commentpost},
-      include:[{model:User,attributes:['name']},{model:Post}]
+      include:[{model:User,attributes:['name'],where:{id:commentAuthor}},{model:Post}]
     });
     const comments = commentData.map((comment)=>comment.get({plain: true}));
 
     res.render('post',{
       ...posts,
+      users,
       comments,
       logged_in: req.session.logged_in
     })
@@ -91,6 +94,7 @@ router.get('/dashboard',isAuth,async (req,res)=>{
       attributes:{exclude:['password']},
       include:[{model:Post}]
     });
+    
     const user = userData.get({plain:true});
     person = user.id
 
