@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get route for one post
-router.get('/post/:id', async(req,res)=>{
+router.get('/post/:id',isAuth, async(req,res)=>{
   try{
     const userData = await User.findByPk(req.params.id)
     const commentAuthor =req.session.user_id
