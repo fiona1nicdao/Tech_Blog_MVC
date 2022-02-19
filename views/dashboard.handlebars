@@ -30,11 +30,10 @@
 
   {{!-- edit comments --}}
   <h1>Your Comments </h1>
-  <div>
+  <div  class="width">
     {{#each comments as |comment|}}
     <div class="comment col-md-8">
-      <h1>Comment</h1>
-      <div class="dashboard-post col-md-12">
+      <div class="dashboard-post">
         <h2>Post: {{comment.post.title}}</h2>
         <p>- {{format_date comment.post.date}}</p>
       </div>
