@@ -1,5 +1,5 @@
 # Tech_Blog_MVC
-Homework 14
+Week 14 Model View Controller
 
 ![License: MIT](<https://img.shields.io/badge/License-MIT-yellow.svg>)
 ## Description 
